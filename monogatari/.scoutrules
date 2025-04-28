@@ -1,0 +1,207 @@
+Monogatari is a JavaScript-based visual novel engine that enables developers to create interactive narratives with rich storytelling capabilities. This document provides an overview of the engine's architecture, core components, and execution flow.
+
+## Project Structure
+
+Files you'll work with most frequently:
+
+| File            | Purpose                                            |
+| --------------- | -------------------------------------------------- |
+| `index.html`    | Main HTML file that loads the visual novel         |
+| `js/options.js` | Game configuration (title, characters, settings)   |
+| `js/script.js`  | Your visual novel script (dialog, choices, scenes) |
+| `js/storage.js` | Configuration for save/load functionality          |
+| `js/main.js`    | Engine initialization                              |
+| `assets/`       | Directory for images, audio, video files           |
+
+### HTML Structure
+
+The `index.html` file serves as the entry point for your visual novel. It contains the necessary structure and loads all required scripts and styles:
+
+```
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta tags and configuration -->
+    <title>Monogatari Visual Novel</title>
+
+    <!-- CSS Libraries -->
+    <link rel="stylesheet" href="./engine/core/monogatari.css">
+    <link rel="stylesheet" href="./style/main.css">
+
+    <!-- JavaScript Libraries -->
+    <script src="./engine/debug/debug.js"></script>
+    <script src="./engine/core/monogatari.js"></script>
+    <script src="./js/options.js"></script>
+    <script src="./js/storage.js"></script>
+    <script src="./js/script.js"></script>
+    <script src="./js/main.js"></script>
+</head>
+<body>
+    <div id="monogatari">
+        <visual-novel>
+            <language-selection-screen></language-selection-screen>
+            <loading-screen></loading-screen>
+            <main-screen>
+                <main-menu></main-menu>
+            </main-screen>
+            <game-screen>
+                <dialog-log></dialog-log>
+                <text-box></text-box>
+                <quick-menu></quick-menu>
+            </game-screen>
+            <gallery-screen></gallery-screen>
+            <credits-screen></credits-screen>
+            <load-screen></load-screen>
+            <save-screen></save-screen>
+            <settings-screen></settings-screen>
+            <help-screen></help-screen>
+        </visual-novel>
+    </div>
+</body>
+</html>
+```
+
+This HTML structure includes all the custom elements defined by Monogatari's component system.
+
+## Basic Configuration
+
+### Game Settings
+
+In the `options.js` file, you can configure your game's basic settings:
+
+```
+monogatari.settings({
+    'Name': 'My Visual Novel',
+    'Version': '1.0.0',
+    'Label': 'Start',  // Starting label
+    'Language': 'English',
+    'ForceSkip': false,
+    'MultiLanguage': false
+});
+```
+
+## Scripting
+
+### Script Structure Overview
+
+In Monogatari, visual novel scripts are organized into labels that contain statements. Each statement represents a single action or dialogue line. The script execution always begins with the 'Start' label unless specified otherwise.
+
+### Creating Your First Script
+
+The script is where you'll define your visual novel's content. It's structured as a series of statements organized into labels.
+
+`script.js`
+
+```
+monogatari.script({
+    // The script starts with the 'Start' label
+    'Start': [
+        // Simple narrator text
+        'Welcome to my visual novel!',
+
+        // Character dialog
+        'mc normal Hello, I am the main character.',
+
+        // Show a background
+        'show scene classroom with fadeIn',
+
+        // Character enters
+        'show character npc normal at center with fadeIn',
+
+        // More dialog
+        'npc nice to meet you!',
+
+        // Present a choice to the player
+        {
+            'Choice': {
+                'Dialog': 'What should I say?',
+                'Introduce': {
+                    'Text': 'Introduce myself',
+                    'Do': 'mc My name is...'
+                },
+                'Ask': {
+                    'Text': 'Ask a question',
+                    'Do': 'mc What is this place?'
+                }
+            }
+        },
+
+        // Jump to another label based on conditions
+        'jump Chapter1'
+    ],
+
+    'Chapter1': [
+        // More script statements...
+    ]
+});
+```
+
+Each statement in the script is processed by a corresponding Action class in the Actions system.
+
+### Characters
+
+Characters are defined with a name and a color (used for their dialogue text):
+
+```
+monogatari.characters({
+    'mc': {
+        name: 'Main Character',
+        color: '#5bcaff',
+        directory: 'mc',   // Optional subfolder in assets/characters/
+        sprites: {
+            normal: 'normal.png',
+            happy: 'happy.png',
+            sad: 'sad.png'
+        }
+    },
+    'npc': {
+        name: 'Supporting Character',
+        color: '#ff7f7f',
+        sprites: {
+            normal: 'npc-normal.png',
+            surprised: 'npc-surprised.png'
+        }
+    }
+});
+```
+
+## Adding Assets
+
+Place your media assets in the appropriate directories:
+
+Character sprites: dist/assets/characters/
+Background scenes: dist/assets/scenes/
+Music and sound effects: dist/assets/audio/
+Videos: dist/assets/video/
+
+```
+// Define background scenes
+monogatari.assets('scenes', {
+    'classroom': 'classroom.jpg',
+    'hallway': 'hallway.png'
+});
+
+// Define music tracks
+monogatari.assets('music', {
+    'main_theme': 'main_theme.mp3',
+    'tense': 'tense_situation.mp3'
+});
+
+// Define sound effects
+monogatari.assets('sounds', {
+    'door_open': 'door_open.ogg',
+    'footsteps': 'footsteps.mp3'
+});
+
+// Define images
+monogatari.assets('images', {
+    'letter': 'letter.png',
+    'photo': 'family_photo.jpg'
+});
+```
+
+## Running Your Visual Novel
+
+For most development work, `yarn serve` is the quickest way to test your changes as it starts a local web server and automatically opens your game in the browser. When you're ready to distribute your visual novel, use the appropriate netlify command to create platform-specific packages.
+
+The build settings can be customized in the `package.json` and `netlify.toml` files, where you can specify application details, icons, and build targets.
