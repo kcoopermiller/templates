@@ -4,11 +4,11 @@
   
   # No build command needed for Monogatari since it's mostly client-side
   # If you're using a build process, you would specify it here
-  # command = "yarn build" 
+  # command = "npm run build" 
 
 [dev]
   # Local dev command
-  command = "yarn serve"
+  command = "npm run serve"
   # Port for local development server
   port = 3000
   # Directory to serve
