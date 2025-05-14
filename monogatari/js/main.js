@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 /* global Monogatari */
 /* global monogatari */
 
@@ -29,7 +29,7 @@ const { $_ready, $_ } = Monogatari;
 $_ready (() => {
 	// 2. Inside the $_ready function:
 
-	monogatari.init ('#monogatari').then (() => {
+	monogatari.init ("#monogatari").then (() => {
 		// 3. Inside the init function:
 
 	});
