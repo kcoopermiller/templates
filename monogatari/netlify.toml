@@ -1,47 +1,10 @@
 [build]
-  # The directory where your built files are
-  publish = "dist/"
+  publish = "."
   
-  # No build command needed for Monogatari since it's mostly client-side
-  # If you're using a build process, you would specify it here
-  # command = "npm run build" 
-
 [dev]
-  # Local dev command
-  command = "npm run serve"
-  # Port for local development server
-  port = 3000
-  # Directory to serve
-  publish = "dist/"
-
-# Redirects all routes to index.html for SPA functionality
+  framework = "#static"
+  
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
-
-# Headers to enable service workers and proper caching
-[[headers]]
-  for = "/*"
-    [headers.values]
-    cache-control = "public, max-age=3600"
-
-[[headers]]
-  for = "/engine/*"
-    [headers.values]
-    cache-control = "public, max-age=31536000"
-
-[[headers]]
-  for = "/*.js"
-    [headers.values]
-    cache-control = "public, max-age=31536000"
-
-[[headers]]
-  for = "/*.css"
-    [headers.values]
-    cache-control = "public, max-age=31536000"
-
-[[headers]]
-  for = "/assets/*"
-    [headers.values]
-    cache-control = "public, max-age=31536000" 

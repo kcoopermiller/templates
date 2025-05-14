@@ -3,7 +3,6 @@
 /* global monogatari */
 
 /**
- * =============================================================================
  * This is the file where you should put all your custom JavaScript code,
  * depending on what you want to do, there are 3 different places in this file
  * where you can add code.
@@ -20,7 +19,6 @@
  *    have been preloaded (if enabled) and your game is ready to be played.
  *
  * You should always keep the $_ready function as the last thing on this file.
- * =============================================================================
  **/
 
 const { $_ready, $_ } = Monogatari;

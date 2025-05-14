@@ -1,10 +1,8 @@
 /**
- * =======================================
  * Engine Settings
  *
  * Do not modify the ones marked with a *
  * Unless you know what you are doing
- * =======================================
  **/
 
 'use strict';

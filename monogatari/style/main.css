@@ -1,5 +1,4 @@
 /**
- * =============================================================================
  * This is the file where all your styling should go in.
  * Instead of modifying the styles found in the monogatari.css file or others,
  * you should overwrite those styles in this file.
@@ -8,13 +7,10 @@
  * common you might want to change. To find what other elements are available,
  * you can take a look at the monogatari.css file or use your browser's dev
  * tools to inspect the elements.
- * =============================================================================
 **/
 
 /**
- * ===========================
  * General Styling
- * ===========================
 **/
 
 /* General Style */
@@ -38,9 +34,7 @@ button:hover {
 }
 
 /**
- * ===========================
  * Main Menu Styling
- * ===========================
 **/
 
 /* Main Menu Styling */
@@ -54,9 +48,7 @@ button:hover {
 }
 
 /**
- * ===========================
  * Save and Load Menus Styling
- * ===========================
 **/
 
 /* Slots Style */
@@ -80,9 +72,7 @@ button:hover {
 }
 
 /**
- * ===========================
  * Game Elements Styling
- * ===========================
 **/
 
 /* Choice Buttons style */
@@ -121,9 +111,7 @@ button:hover {
 }
 
 /**
- * ===========================
  * Quick Menu Styling
- * ===========================
 **/
 
 /* These styles are applied to the Mobile version of the Quick Menu */
@@ -149,9 +137,7 @@ button:hover {
 }
 
 /**
- * ===========================
  * Range Styling
- * ===========================
 **/
 
 /* Use the background property to set a color for these */
