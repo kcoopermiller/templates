@@ -129,7 +129,7 @@ monogatari.script ({
 	'Yes': [
 		'y Thats awesome!',
 		'y Then you are ready to go ahead and create an amazing Game!',
-		'y I can’t wait to see what story you’ll tell!',
+		'y I can\'t wait to see what story you\'ll tell!',
 		'end'
 	],
 
@@ -140,7 +140,7 @@ monogatari.script ({
 		'show message Help',
 
 		'y Go ahead and create an amazing Game!',
-		'y I can’t wait to see what story you’ll tell!',
+		'y I can\'t wait to see what story you\'ll tell!',
 		'end'
 	]
 });
