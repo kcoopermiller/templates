@@ -1,5 +1,8 @@
 /* global monogatari */
 
+// Note: Use double quotation marks (") instead of single quotes (') when your text contains apostrophes
+// to avoid escaping issues (e.g., "y I can't wait to see what story you'll tell!")
+
 // Define the messages used in the game.
 monogatari.action ("message").messages ({
 	"Help": {
